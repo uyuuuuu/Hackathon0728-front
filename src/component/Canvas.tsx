@@ -1,3 +1,5 @@
+//キャンパスのリアルタイム通信？
+
 import React, { useRef, useState } from 'react';
 import { Box, Button, Input, Stack, Slider, SliderTrack, SliderFilledTrack, SliderThumb} from '@chakra-ui/react';
 
