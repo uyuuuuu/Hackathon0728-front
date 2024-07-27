@@ -51,24 +51,29 @@ const RouletteView: React.FC<ItemListProps> = ({ rouletteData }) => {
     }, [rouletteData]);
 
     return (
-        <VStack w='50%' p={4}>
-            <header className="w-full p-4 flex justify-between items-center">
-                <Back />
+        <VStack w='50%' p={4} h="100vh" >
+            <header className="w-full p-4 flex justify-center items-center relative">
+                <div className="absolute left-0">
+                    <Back />
+                </div>
                 <div>ルーレット</div>
             </header>
-            <Wheel
-                mustStartSpinning={mustSpin}
-                prizeNumber={prizeNumber}
-                data={RouletteCustomData}
-                onStopSpinning={() => {
-                    setMustSpin(false);
-                }}
-            />
-            <Button
-                onClick={handleSpinClick}
-                colorScheme='blue'>
-                spin
-            </Button>
+            <VStack flex="1" display="flex" justifyContent="center" alignItems="center" h="100%">
+                    <Wheel
+                    mustStartSpinning={mustSpin}
+                    prizeNumber={prizeNumber}
+                    data={RouletteCustomData}
+                    onStopSpinning={() => {
+                        setMustSpin(false);
+                    }}
+                />
+                <Button
+                    mt={10}
+                    onClick={handleSpinClick}
+                    colorScheme='blue'>
+                    spin
+                </Button>
+            </VStack>
         </VStack>
     )
 }
