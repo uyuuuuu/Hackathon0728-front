@@ -5,13 +5,18 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
-  Input,
   DrawerFooter,
-  Button,
   useDisclosure,
+  IconButton,
+  Avatar,
+  Box,
+  Text,
+  Flex,
+  Divider,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Menu() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -19,9 +24,13 @@ function Menu() {
 
   return (
     <>
-      <Button ref={btnRef} colorScheme="teal" onClick={onOpen} className="">
-        <HamburgerIcon />
-      </Button>
+      <IconButton
+        ref={btnRef}
+        colorScheme="teal"
+        onClick={onOpen}
+        aria-label="Menu"
+        icon={<HamburgerIcon />}
+      />
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -29,21 +38,58 @@ function Menu() {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <div className="h-[800px]">
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>Create your account</DrawerHeader>
-            <DrawerBody>
-              <Input placeholder="Type here..." />
-            </DrawerBody>
-            <DrawerFooter>
-              <Button variant="outline" mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme="blue">Save</Button>
-            </DrawerFooter>
-          </DrawerContent>
-        </div>
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>
+            <Flex align="center">
+              <Avatar src="path/to/user1.png" size="md" name="なずな" />
+              <Box ml={3}>
+                {" "}
+                <Text fontSize="lg" fontWeight="bold">
+                  なずな
+                </Text>
+              </Box>
+            </Flex>
+          </DrawerHeader>
+          <Divider />
+          <DrawerBody>
+            <Flex direction="column">
+              <Text
+                as={Link}
+                to="/Roulette"
+                fontSize="xl" // テキストサイズを大きくする
+                mb={2}
+                _hover={{ color: "teal.500" }} // マウスオーバー時の色変更
+              >
+                掲示板
+              </Text>
+              <Text
+                as={Link}
+                to="/Roulette"
+                fontSize="xl" // テキストサイズを大きくする
+                mb={2}
+                _hover={{ color: "teal.500" }} // マウスオーバー時の色変更
+              >
+                ルーレット
+              </Text>
+              <Text
+                as={Link}
+                to="/Roulette"
+                fontSize="xl" // テキストサイズを大きくする
+                mb={2}
+                _hover={{ color: "teal.500" }} // マウスオーバー時の色変更
+              >
+                ペイント
+              </Text>
+            </Flex>
+          </DrawerBody>
+          <Divider />
+          <DrawerFooter>
+            <Text fontSize="lg" fontWeight="bold">
+              設定
+            </Text>
+          </DrawerFooter>
+        </DrawerContent>
       </Drawer>
     </>
   );
