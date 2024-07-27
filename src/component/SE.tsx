@@ -1,3 +1,5 @@
+import React from "react";
+import { useState } from 'react';
 import {
   Popover,
   PopoverTrigger,
@@ -42,20 +44,23 @@ import IncorrectSound from '../assets/クイズ不正解1.mp3';
 
 function SE() {
 
-  const [bombPlay] = useSound(BombSound, { volume: 0.9 });
-  const [clapPlay] = useSound(ClapSound);
-  const [ankoPlay] = useSound(AnkoSound, { volume: 1.8 });
-  const [chickPlay] = useSound(ChickSound, { volume: 0.8 });
-  const [dogPlay] = useSound(DogSound);
-  const [catPlay] = useSound(CatSound, { volume: 0.6 });
-  const [blockPlay] = useSound(BlockSound);
-  const [correctPlay] = useSound(CorrectSound);
-  const [incorrectPlay] = useSound(IncorrectSound);
+  const [sliderValue, setSliderValue] = useState(40.0)
+
+  const [bombPlay] = useSound(BombSound, { volume: sliderValue / 100 });
+  const [clapPlay] = useSound(ClapSound, { volume: sliderValue / 100 });
+  const [ankoPlay] = useSound(AnkoSound, { volume: sliderValue / 100 });
+  const [chickPlay] = useSound(ChickSound, { volume: sliderValue / 100 });
+  const [dogPlay] = useSound(DogSound, { volume: sliderValue / 100 });
+  const [catPlay] = useSound(CatSound, { volume: sliderValue / 100 });
+  const [blockPlay] = useSound(BlockSound, { volume: sliderValue / 100 });
+  const [correctPlay] = useSound(CorrectSound, { volume: sliderValue / 100 });
+  const [incorrectPlay] = useSound(IncorrectSound, { volume: sliderValue / 100 });
 
 
   return (
     <Popover placement="top"> {/* ポップオーバーをボタンの上に表示 */}
       <PopoverTrigger>
+        {/* ホーム画面のベルボタン */}
         <Button
           variant="solid"
           colorScheme="blue"
@@ -63,6 +68,7 @@ function SE() {
         >
           <BellIcon />
         </Button>
+        {/* SEのポップオーバー */}
       </PopoverTrigger>
       <Portal>
         <PopoverContent>
@@ -71,7 +77,7 @@ function SE() {
           <PopoverCloseButton />
           <PopoverBody>
             <HStack>
-              <Stack>
+              <Stack> /**/
                 <Button
                   colorScheme="blue"
                   leftIcon={<img src={BombIcon} alt="Bomb" />}
@@ -118,7 +124,12 @@ function SE() {
 
           <PopoverFooter>
             音量
-            <Slider aria-label='slider-ex-1' colorScheme='pink' defaultValue={30}>
+            <Slider
+              aria-label='slider-ex-1'
+              colorScheme='pink'
+              defaultValue={30}
+              onChange={(v) => setSliderValue(v)}
+            >
               <SliderTrack>
                 <SliderFilledTrack />
               </SliderTrack>
