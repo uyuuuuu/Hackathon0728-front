@@ -1,38 +1,78 @@
+import { DeleteIcon } from '@chakra-ui/icons';
 import {
     Box,
+    Button,
     Editable,
     EditableInput,
-    EditablePreview
-} from '@chakra-ui/react'
-import './App.css'
+    EditablePreview,
+    Flex,
+    VStack
+} from '@chakra-ui/react';
+import { useState } from 'react';
 
 function Roulette() {
-    //const [items, setItems] = useState<string[]>(['項目1', '項目2', '項目3', '項目4']);
+    const [items, setItems] = useState<string[]>(['お題1', 'お題2', 'お題3', 'お題4', 'お題5']);
+    // 項目を追加ボタン -> お題◯っていうEditableが追加
+    function onClick() {
+        const newItemNumber = items.length + 1;
+        setItems([...items, `お題${newItemNumber}`]);
+        console.log(`新しい項目 "お題${newItemNumber}" が追加されました。`);
+    }
+    // 削除ボタン -> 項目を削除
+    function onDelete(index: number) {
+        const newItems = items.filter((_, i) => i !== index);
+        setItems(newItems);
+        console.log(`index${index}のお題が削除されました。`);
+    }
+    // 項目のテキストが変更されたら -> コンソール出力(仮)
+    function onChange(index: number, newValue: string) {
+        const newItems = [...items];
+        newItems[index] = newValue;
+        setItems(newItems);
+        console.log(`value changed to "${newValue}".`);
+    }
     return (
-        <>
-            <Box bg='Teal 50' w='100%' p={4}>
-                <Editable defaultValue='お題1'>
-                    <EditablePreview />
-                    <EditableInput />
-                </Editable>
-                <Editable defaultValue='お題2'>
-                    <EditablePreview />
-                    <EditableInput />
-                </Editable>
-                <Editable defaultValue='お題3'>
-                    <EditablePreview />
-                    <EditableInput />
-                </Editable>
-                <Editable defaultValue='お題4'>
-                    <EditablePreview />
-                    <EditableInput />
-                </Editable>
-                <Editable defaultValue='お題5'>
-                    <EditablePreview />
-                    <EditableInput />
-                </Editable>
-            </Box>
-        </>
+        <Box width="1280px" height="800px">
+            <Flex>
+                <VStack background={'teal.50'} w='50%' p={4}>
+                    ルーレットゾーン
+                </VStack>
+
+                <VStack background={'blue.50'} w='50%' p={4}>
+                    <div>お題一覧</div>
+                    {items.map((item, index) => (
+                        <Flex key={index} width="100%" alignItems="center">
+                            <Editable
+                                defaultValue={item}
+                                onChange={(newValue) => onChange(index, newValue)}
+                                // maxW="80%"
+                                flex="1"
+                            >
+                                <EditablePreview
+                                    width="100%"
+                                    
+                                />
+                                <EditableInput
+                                    maxLength={30}
+                                    width={`${57}ch`}
+                                />
+                            </Editable>
+                            <Box textAlign="right">
+                                <Button
+                                    onClick={() => onDelete(index)}
+                                    colorScheme='blue' variant='outline' size='sm' ml={4} p={1}>
+                                    <DeleteIcon boxSize={6} />
+                                </Button>
+                            </Box>
+                        </Flex>
+                    ))}
+                    {/* 追加ボタン */}
+                    <Button onClick={onClick} colorScheme='blue' variant='outline'>
+                        項目を追加
+                    </Button>
+                </VStack>
+            </Flex>
+        </Box>
     )
 }
 
