@@ -58,7 +58,7 @@ function SE() {
 
 
   return (
-    <Popover placement="top"> {/* ポップオーバーをボタンの上に表示 */}
+    <Popover placement="top-start"> {/* ポップオーバーをボタンの上に表示 */}
       <PopoverTrigger>
         {/* ホーム画面のベルボタン */}
         <Button
