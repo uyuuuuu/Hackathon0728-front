@@ -3,7 +3,7 @@ import SE from "./component/SE";
 import Exit from "./component/Exit";
 import UserAvators from "./component/UserAvatars";
 import backgroundImage from "./assets/homedesk.jpg";
-import flagImage from "./assets/flag.png"; // 旗の画像のパスを指定
+import flagImage from "./assets/flag.png";
 import { useEffect } from "react";
 
 function Home() {

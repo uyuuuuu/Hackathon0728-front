@@ -1,21 +1,13 @@
 //参加している人のアイコンとステータスの取得
 
+import { Avatar, Box, Tooltip ,IconButton} from "@chakra-ui/react";
 import {
-  Avatar,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Box,
-} from "@chakra-ui/react";
-import {
-  AddIcon,
-  RepeatIcon,
-  EditIcon,
-  ExternalLinkIcon,
-} from "@chakra-ui/icons";
-
+  FaGamepad,
+  FaLaptopCode,
+  FaHeadphones,
+  FaBook,
+  FaWineGlass,
+} from "react-icons/fa";
 
 function UserAvatars() {
   const userImages = [
@@ -33,26 +25,68 @@ function UserAvatars() {
     "path/to/user3.png",
   ];
 
-  const userCoordinates = [
-    { top: "47%", left: "77%" },//1
-    { top: "52%", left: "63%" },
-    { top: "55%", left: "45%" },
-    { top: "47%", left: "35%" },//4
-    { top: "40%", left: "25%" },
-    { top: "33%", left: "15%" },//6
-    { top: "20%", left: "15%" },
-    { top: "18%", left: "27%" },//8
-    { top: "20%", left: "41%" },
-    { top: "24%", left: "52%" },//10
-    { top: "29%", left: "63%" },
-    { top: "34%", left: "74%" },//12
+  const userActivities = [
+    { activity: "gaming", activityDetail: "Playing Minecraft" },
+    { activity: "working", activityDetail: "Coding" },
+    { activity: "listening", activityDetail: "Spotify" },
+    { activity: "reading", activityDetail: "Design Patterns" },
+    { activity: "gaming", activityDetail: "Playing Valorant" },
+    { activity: "working", activityDetail: "Writing documentation" },
+    { activity: "listening", activityDetail: "Podcast" },
+    { activity: "reading", activityDetail: "Clean Code" },
+    { activity: "gaming", activityDetail: "Playing Among Us" },
+    { activity: "working", activityDetail: "Debugging" },
+    { activity: "listening", activityDetail: "YouTube Music" },
+    { activity: "drinking", activityDetail: "ほろ酔い" },
   ];
 
+  const userCoordinates = [
+    { top: "47%", left: "80%" }, //1
+    { top: "51%", left: "70%" },
+    { top: "55%", left: "60%" },
+    { top: "52%", left: "43%" }, //4
+    { top: "44%", left: "33%" }, 
+    { top: "37%", left: "23%" }, //6
+    { top: "31%", left: "13%" },
+    { top: "19%", left: "22%" }, //8
+    { top: "18%", left: "36%" },
+    { top: "23%", left: "48%" }, //10
+    { top: "30%", left: "64%" },
+    { top: "34%", left: "74%" }, //12
+  ];
 
-  // type User = {
-  //   icon: string;
-  //   userName: string;
-  // };
+  const handleIconClick = () => {
+    alert(`かんぱい`);
+  };
+
+  const getActivityIcon = (activity, activityDetail) => {
+    switch (activity) {
+      case "gaming":
+        return <FaGamepad />;
+      case "working":
+        return <FaLaptopCode />;
+      case "listening":
+        return <FaHeadphones />;
+      case "reading":
+        return <FaBook />;
+      case "drinking":
+        return (
+          <IconButton
+          icon={<FaWineGlass />}
+          aria-label="Drink"
+          onClick={() => handleIconClick()}
+          borderRadius="full" // まん丸にする
+          width="40px" // 幅
+          height="40px" // 高さ
+          backgroundColor="black" // 背景色
+          color="white" // アイコンの色
+          _hover={{ backgroundColor: "gray.700" }} // ホバー時の背景色
+        />
+        );
+      default:
+        return null;
+    }
+  };
 
   // 画像と座標を組み合わせた配列を作成
   const userData = userImages.map((image, index) => ({
@@ -61,25 +95,31 @@ function UserAvatars() {
   }));
 
   return (
-    <div className="relative w-full h-full">
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
       {userData.map((user, index) => (
         <Box key={index} position="absolute" top={user.top} left={user.left}>
-          <Avatar src={user.src} size="xl" />
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<AddIcon />}
-              variant="outline"
-              ml={2}
-            />
-
-            <MenuList>
-              <MenuItem icon={<ExternalLinkIcon />}>New Window</MenuItem>
-              <MenuItem icon={<RepeatIcon />}>Open Closed Tab</MenuItem>
-              <MenuItem icon={<EditIcon />}>Open File...</MenuItem>
-            </MenuList>
-          </Menu>
+          <Tooltip label={userActivities[index].activityDetail} hasArrow>
+            <Box position="relative">
+              <Avatar src={user.src} size="xl" />
+              <Box
+                position="absolute"
+                bottom="-4"
+                right="-6"
+                width="40px"
+                height="40px"
+                borderRadius="full"
+                border="1px solid white"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color="white"
+                fontSize="24px"
+                backgroundColor={"black"}
+              >
+                {getActivityIcon(userActivities[index].activity,userActivities[index].activityDetail)}
+              </Box>
+            </Box>
+          </Tooltip>
         </Box>
       ))}
     </div>
