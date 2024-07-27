@@ -2,7 +2,7 @@ import Menu from "./component/Menu";
 import SE from "./component/SE";
 import Exit from "./component/Exit";
 import UserAvators from "./component/UserAvatars";
-import backgroundImage from "./assets/Home.png"; // 画像のパスを指定
+import backgroundImage from "./assets/homedesk.jpg"; // 画像のパスを指定
 import { useEffect } from "react";
 
 function Home() {

@@ -1,15 +1,15 @@
-import Canvas from "./component/Canvas";
+import Message from "./component/Message";
 import Back from "./component/Back";
 
-function Paint() {
+function Board() {
   return (
     <>
       <div className="left-0 py-2 px-2">
         <Back />
       </div>
-      <Canvas width={1240} height={600} />
+      <Message />
     </>
   );
 }
 
-export default Paint;
+export default Board;

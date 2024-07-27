@@ -19,7 +19,6 @@ function Enter() {
                                 </Center>
                             </Box >
                         </Center>
-
                         <Box bg='black' w='80px' h='35px'p={4} color='black' rounded="full"></Box>
                     </Box>
                 </Button>

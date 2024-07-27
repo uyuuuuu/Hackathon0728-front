@@ -5,6 +5,7 @@ import Enter from "./Enter";
 import Home from "./Home";
 import Roulette from "./Roulette";
 import Paint from "./Paint";
+import Board from "./Board"
 
 export const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ export const AppRoutes = () => {
       <Route path="/Roulette" element={<Roulette />} />
       <Route path="/Enter" element={<Enter />} />
       <Route path="/Paint" element={<Paint />} />
+      <Route path="/Board" element={<Board />} />
     </Routes>
   );
 };
