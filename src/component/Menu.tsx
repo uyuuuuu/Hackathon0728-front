@@ -74,7 +74,7 @@ function Menu() {
               </Text>
               <Text
                 as={Link}
-                to="/Roulette"
+                to="/Paint"
                 fontSize="xl" // テキストサイズを大きくする
                 mb={2}
                 _hover={{ color: "teal.500" }} // マウスオーバー時の色変更
