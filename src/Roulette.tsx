@@ -20,6 +20,9 @@ function Roulette() {
     }
     // 削除ボタン -> 項目を削除
     function onDelete(index: number) {
+        for(let str of items){
+            console.log(str);
+        }
         const newItems = items.filter((_, i) => i !== index);
         setItems(newItems);
         console.log(`index${index}のお題が削除されました。`);
