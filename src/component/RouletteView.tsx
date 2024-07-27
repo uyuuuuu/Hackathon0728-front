@@ -1,6 +1,7 @@
 import { Button, VStack } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 import { Wheel } from 'react-custom-roulette';
+import Back from "../component/Back";
 interface ItemListProps {
     items: string[];
     setItems: React.Dispatch<React.SetStateAction<string[]>>;
@@ -43,16 +44,18 @@ const RouletteView: React.FC<ItemListProps> = ({ rouletteData }) => {
                 ...item,
                 style: {
                     ...item.style,
-                    fontSize: fontSize,
-                    textDistance: 100
+                    fontSize: fontSize
                 }
             };
         });
     }, [rouletteData]);
 
     return (
-        <VStack background={'teal.50'} w='50%' p={4}>
-            <div>ルーレット</div>
+        <VStack w='50%' p={4}>
+            <header className="w-full p-4 flex justify-between items-center">
+                <Back />
+                <div>ルーレット</div>
+            </header>
             <Wheel
                 mustStartSpinning={mustSpin}
                 prizeNumber={prizeNumber}

@@ -9,9 +9,11 @@ interface ItemListProps {
 const RouletteView: React.FC<ItemListProps> = ({ items, setItems }) => {
     // 項目を追加ボタン -> お題◯っていうEditableが追加
     function onAdd() {
-        const newItemNumber = items.length + 1;
-        setItems([...items, `お題${newItemNumber}`]);
-        console.log(`新しい項目 "お題${newItemNumber}" が追加されました。`);
+        if (items.length < 20) {
+            const newItemNumber = items.length + 1;
+            setItems([...items, `お題${newItemNumber}`]);
+            console.log(`新しい項目 "お題${newItemNumber}" が追加されました。`);
+        }
     }
     // 削除ボタン -> 項目を削除
     function onDelete(index: number) {
