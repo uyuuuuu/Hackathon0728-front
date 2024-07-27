@@ -10,9 +10,9 @@ function App() {
     <Button
       variant="contained"
       onClick={handleButtonClick}
-      className="w-full bg-blue-500 py-2 px-4 rounded-lg text-lg hover:bg-blue-700"
+      className=" bg-blue-500 py-2 px-4 rounded-lg text-lg hover:bg-blue-700"
     >
-      アプリへ
+戻る
     </Button>
   );
 }
