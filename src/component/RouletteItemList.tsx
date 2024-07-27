@@ -8,7 +8,7 @@ interface ItemListProps {
 
 const RouletteView: React.FC<ItemListProps> = ({ items, setItems }) => {
     // 項目を追加ボタン -> お題◯っていうEditableが追加
-    function onClick() {
+    function onAdd() {
         const newItemNumber = items.length + 1;
         setItems([...items, `お題${newItemNumber}`]);
         console.log(`新しい項目 "お題${newItemNumber}" が追加されました。`);
@@ -25,6 +25,7 @@ const RouletteView: React.FC<ItemListProps> = ({ items, setItems }) => {
         newItems[index] = newValue;
         setItems(newItems);
         console.log(`value changed to "${newValue}".`);
+        newItems.map(item => console.log(item));
     }
 
 
@@ -58,7 +59,7 @@ const RouletteView: React.FC<ItemListProps> = ({ items, setItems }) => {
                 </Flex>
             ))}
             {/* 追加ボタン */}
-            <Button onClick={onClick} colorScheme='blue' variant='outline'>
+            <Button onClick={onAdd} colorScheme='blue' variant='outline'>
                 項目を追加
             </Button>
         </VStack>
