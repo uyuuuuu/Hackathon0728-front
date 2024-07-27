@@ -1,31 +1,23 @@
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
-import './App.css'
+import { Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import Menu from "./component/Menu";
 
-function App() {
-
+function Home() {
   return (
-    <>
-      <Tabs>
-        <TabList>
-          <Tab>One</Tab>
-          <Tab>Two</Tab>
-          <Tab>Three</Tab>
-        </TabList>
+    <div className="bg-gray-100">
+      <Button
+        variant="contained"
+        color="primary"
+        className="fixed left-8"
+        as={Link}
+        to="/"
+      >
+        戻る
+      </Button>
 
-        <TabPanels>
-          <TabPanel>
-            <p>one!</p>
-          </TabPanel>
-          <TabPanel>
-            <p>two!</p>
-          </TabPanel>
-          <TabPanel>
-            <p>three!</p>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
-    </>
-  )
+      <Menu />
+    </div>
+  );
 }
 
-export default App
+export default Home;
