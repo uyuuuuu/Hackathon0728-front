@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { Box, Button, Input, Stack, Slider, SliderTrack, SliderFilledTrack, SliderThumb} from '@chakra-ui/react';
 
 interface IProps {
   width: number;
@@ -71,8 +72,8 @@ const Canvas: React.FC<IProps> = (props) => {
     }
     ctx.lineTo(x, y);
     ctx.lineCap = "round";
-    ctx.lineWidth = lineWidth; // ペンの太さ
-    ctx.strokeStyle = strokeStyle; // ペンの色
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = strokeStyle;
     ctx.stroke();
     mouseX = x;
     mouseY = y;
@@ -84,8 +85,8 @@ const Canvas: React.FC<IProps> = (props) => {
   }
 
   return (
-    <section>
-      <div>
+    <Stack spacing={4} p={4}>
+      <Box>
         <canvas 
           onMouseDown={OnClick}
           onMouseMove={OnMove}
@@ -94,32 +95,38 @@ const Canvas: React.FC<IProps> = (props) => {
           ref={canvasRef}
           width={width}
           height={height}
+          style={{ border: '1px solid #ccc' }}
         />
-      </div>
-      <div>
-        <button onClick={Reset}>リセット</button>
-      </div>
-      <div>
-        <label>
-          ペンの太さ:
-          <input 
-            type="range" 
-            min="1" 
-            max="50" 
-            value={lineWidth} 
-            onChange={(e) => setLineWidth(Number(e.target.value))}
-          />
-        </label>
-        <label>
-          ペンの色:
-          <input 
-            type="color" 
-            value={strokeStyle} 
-            onChange={(e) => setStrokeStyle(e.target.value)}
-          />
-        </label>
-      </div>
-    </section>
+      </Box>
+      <Stack spacing={4}>
+        <Button onClick={Reset} colorScheme="teal">リセット</Button>
+        <Stack spacing={4}>
+          <Box>
+            <label>ペンの太さ:</label>
+            <Slider 
+              defaultValue={lineWidth} 
+              min={1} 
+              max={50} 
+              onChange={(value) => setLineWidth(value)}
+              colorScheme="teal"
+            >
+              <SliderTrack>
+                <SliderFilledTrack />
+              </SliderTrack>
+              <SliderThumb />
+            </Slider>
+          </Box>
+          <Box>
+            <label>ペンの色:</label>
+            <Input 
+              type="color" 
+              value={strokeStyle} 
+              onChange={(e) => setStrokeStyle(e.target.value)} 
+            />
+          </Box>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 }
 

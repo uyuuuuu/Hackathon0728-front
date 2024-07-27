@@ -45,6 +45,12 @@ function UserAvatars() {
     { top: "70%", left: "50%" },
   ];
 
+
+  // type User = {
+  //   icon: string;
+  //   userName: string;
+  // };
+
   // 画像と座標を組み合わせた配列を作成
   const userData = userImages.map((image, index) => ({
     src: image,
@@ -64,6 +70,7 @@ function UserAvatars() {
               variant="outline"
               ml={2}
             />
+
             <MenuList>
               <MenuItem icon={<ExternalLinkIcon />}>New Window</MenuItem>
               <MenuItem icon={<RepeatIcon />}>Open Closed Tab</MenuItem>

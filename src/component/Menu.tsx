@@ -56,7 +56,7 @@ function Menu() {
             <Flex direction="column">
               <Text
                 as={Link}
-                to="/Roulette"
+                to="/Board"
                 fontSize="xl" // テキストサイズを大きくする
                 mb={2}
                 _hover={{ color: "teal.500" }} // マウスオーバー時の色変更
