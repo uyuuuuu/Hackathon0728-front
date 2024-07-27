@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Menu from "./component/Menu";
 
 function Home() {
@@ -9,11 +9,12 @@ function Home() {
         variant="contained"
         color="primary"
         className="fixed left-8"
-        as={RouterLink}
-        to="/app"
+        as={Link}
+        to="/"
       >
         戻る
       </Button>
+
       <Menu />
     </div>
   );
