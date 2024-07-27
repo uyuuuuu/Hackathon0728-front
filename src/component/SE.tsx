@@ -44,7 +44,7 @@ import IncorrectSound from '../assets/クイズ不正解1.mp3';
 
 function SE() {
 
-  const [sliderValue, setSliderValue] = useState(40.0)
+  const [sliderValue, setSliderValue] = useState(40.0) // 音量調節スライダーの値
 
   const [bombPlay] = useSound(BombSound, { volume: sliderValue / 100 });
   const [clapPlay] = useSound(ClapSound, { volume: sliderValue / 100 });
@@ -77,7 +77,7 @@ function SE() {
           <PopoverCloseButton />
           <PopoverBody>
             <HStack>
-              <Stack> /**/
+              <Stack>
                 <Button
                   colorScheme="blue"
                   leftIcon={<img src={BombIcon} alt="Bomb" />}
@@ -121,7 +121,7 @@ function SE() {
               </Stack>
             </HStack>
           </PopoverBody>
-
+          {/* 音量調節スライダー */}
           <PopoverFooter>
             音量
             <Slider
