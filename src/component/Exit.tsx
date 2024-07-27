@@ -22,9 +22,9 @@ function Exit() {
       <Button
         variant="solid"
         leftIcon={<img src={LogoutIcon} alt="Logout" />}
-        className="bg-green-500 py-2 px-4"
-        onClick={onOpen} // モーダルを開くためにonOpenを追加
-      ></Button>
+        colorScheme="cyan" // Chakra UIのcolorSchemeを使用
+        onClick={onOpen}
+      />
       <Modal isOpen={isOpen} onClose={onClose} size="lg">
         <ModalOverlay />
         <ModalContent

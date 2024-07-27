@@ -3,11 +3,20 @@ import SE from "./component/SE";
 import Exit from "./component/Exit";
 import UserAvators from "./component/UserAvatars";
 import backgroundImage from "./assets/Home.png"; // 画像のパスを指定
+import { useEffect } from "react";
 
 function Home() {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto"; // クリーンアップ時に戻す
+    };
+  }, []);
+
   return (
     <div
-      className="w-[1280px] h-[800px]  bg-cover bg-center relative"
+      className="w-[1280px] h-[900px]  bg-cover bg-center relative"
       style={{
         backgroundImage: `url(${backgroundImage})`,
       }}
@@ -18,7 +27,7 @@ function Home() {
           <Menu />
         </div>
       </header>
-      
+
       <UserAvators />
 
       <footer className="absolute bottom-4 left-4">

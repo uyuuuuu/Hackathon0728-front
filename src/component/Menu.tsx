@@ -48,20 +48,37 @@ function Menu() {
                 <Text fontSize="lg" fontWeight="bold">
                   なずな
                 </Text>
-                
               </Box>
             </Flex>
           </DrawerHeader>
           <Divider />
           <DrawerBody>
             <Flex direction="column">
-              <Text as={Link} to="/Roulette" fontSize="lg" mb={2}>
+              <Text
+                as={Link}
+                to="/Roulette"
+                fontSize="xl" // テキストサイズを大きくする
+                mb={2}
+                _hover={{ color: "teal.500" }} // マウスオーバー時の色変更
+              >
                 掲示板
               </Text>
-              <Text as={Link} to="/Roulette" fontSize="lg" mb={2}>
+              <Text
+                as={Link}
+                to="/Roulette"
+                fontSize="xl" // テキストサイズを大きくする
+                mb={2}
+                _hover={{ color: "teal.500" }} // マウスオーバー時の色変更
+              >
                 ルーレット
               </Text>
-              <Text as={Link} to="/Roulette" fontSize="lg" mb={2}>
+              <Text
+                as={Link}
+                to="/Roulette"
+                fontSize="xl" // テキストサイズを大きくする
+                mb={2}
+                _hover={{ color: "teal.500" }} // マウスオーバー時の色変更
+              >
                 ペイント
               </Text>
             </Flex>

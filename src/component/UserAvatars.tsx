@@ -1,16 +1,17 @@
 import {
   Avatar,
+  IconButton,
   Menu,
   MenuButton,
-  IconButton,
-  MenuItem,
   MenuList,
+  MenuItem,
+  Box,
 } from "@chakra-ui/react";
 import {
   AddIcon,
-  ExternalLinkIcon,
   RepeatIcon,
   EditIcon,
+  ExternalLinkIcon,
 } from "@chakra-ui/icons";
 
 function UserAvatars() {
@@ -53,32 +54,23 @@ function UserAvatars() {
   return (
     <div className="relative w-full h-full">
       {userData.map((user, index) => (
-        <div
-          key={index}
-          className="absolute"
-          style={{ top: user.top, left: user.left }}
-        >
-          <Avatar key={index} src={user.src} className="absolute" size="md" />
+        <Box key={index} position="absolute" top={user.top} left={user.left}>
+          <Avatar src={user.src} size="md" />
           <Menu>
             <MenuButton
               as={IconButton}
               aria-label="Options"
               icon={<AddIcon />}
               variant="outline"
+              ml={2}
             />
             <MenuList>
-              <MenuItem icon={<ExternalLinkIcon />} command="⌘N">
-                New Window
-              </MenuItem>
-              <MenuItem icon={<RepeatIcon />} command="⌘⇧N">
-                Open Closed Tab
-              </MenuItem>
-              <MenuItem icon={<EditIcon />} command="⌘O">
-                Open File...
-              </MenuItem>
+              <MenuItem icon={<ExternalLinkIcon />}>New Window</MenuItem>
+              <MenuItem icon={<RepeatIcon />}>Open Closed Tab</MenuItem>
+              <MenuItem icon={<EditIcon />}>Open File...</MenuItem>
             </MenuList>
           </Menu>
-        </div>
+        </Box>
       ))}
     </div>
   );
