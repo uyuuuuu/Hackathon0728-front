@@ -8,30 +8,49 @@ interface ItemListProps {
 
 const RouletteView: React.FC<ItemListProps> = ({ items, setItems }) => {
     // 項目を追加ボタン -> お題◯っていうEditableが追加
+    const maxItemNum = 15;
     function onAdd() {
-        const newItemNumber = items.length + 1;
-        setItems([...items, `お題${newItemNumber}`]);
-        console.log(`新しい項目 "お題${newItemNumber}" が追加されました。`);
+        if (items.length < maxItemNum) {
+            const newItemNumber = items.length + 1;
+            setItems([...items, `お題${newItemNumber}`]);
+            console.log(`新しい項目 "お題${newItemNumber}" が追加されました。`);
+        }
     }
+    
     // 削除ボタン -> 項目を削除
     function onDelete(index: number) {
         const newItems = items.filter((_, i) => i !== index);
         setItems(newItems);
         console.log(`index${index}のお題が削除されました。`);
     }
+    
     // 項目のテキストが変更されたら -> コンソール出力(仮)
     function onChange(index: number, newValue: string) {
         const newItems = [...items];
         newItems[index] = newValue;
         setItems(newItems);
         console.log(`value changed to "${newValue}".`);
-        newItems.map(item => console.log(item));
+        // newItems.map(item => console.log(item));
+    }
+
+    //候補を参加者にする
+    function onSyncPeople(){
+        const newItems = ["うゆう","にいろ","ちーちぱーち","なずな","ぽんすけ"]; //TODO:参加者の名前の配列に
+        setItems(newItems);
+        console.log(`value changed to people`);
     }
 
 
     return (
-        <VStack background={'blue.50'} w='50%' p={4}>
-            <div>お題一覧</div>
+        <VStack w='50%' p={8}>
+                <div>お題一覧</div>
+                <Button
+                    mt = {5}
+                    mb = {5}
+                    onClick={onSyncPeople}
+                >
+                    参加者に合わせる
+                </Button>
             {items.map((item, index) => (
                 <Flex key={index} width="100%" alignItems="center">
                     <Editable
