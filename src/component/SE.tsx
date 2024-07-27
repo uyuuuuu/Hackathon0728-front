@@ -14,8 +14,9 @@ import {
 } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
 import BombIcon from "../assets/bomb.svg"; // SVGファイルを直接インポート
+import ChickIcon from "../assets/chick.png"; // SVGファイルを直接インポート
 import DogIcon from "../assets/dog.svg"; // SVGファイルを直接インポート
-import CatIcon from "../assets/cat.svg"; // SVGファイルを直接インポート
+import CatIcon from "../assets/cat.png"; // SVGファイルを直接インポート
 
 import useSound from 'use-sound';
 import BombSound from '../assets/爆発1.mp3';
@@ -25,7 +26,7 @@ import CatSound from '../assets/猫の鳴き声1.mp3';
 
 function SE() {
 
-  const [bombPlay] = useSound(BombSound,{ volume: 0.7 });
+  const [bombPlay] = useSound(BombSound, { volume: 0.7 });
   const [dogPlay] = useSound(DogSound);
   const [catPlay] = useSound(CatSound);
 
@@ -57,7 +58,10 @@ function SE() {
                 <Button colorScheme="blue">Button</Button>
               </HStack>
               <HStack>
-                <Button colorScheme="blue">Button</Button>
+                <Button
+                  colorScheme="blue"
+                  leftIcon={<img src={ChickIcon} alt="Chick" />}
+                  onClick={() => dogPlay()}>ひよこ</Button>
                 <Button
                   colorScheme="blue"
                   leftIcon={<img src={DogIcon} alt="Dog" />}
