@@ -45,8 +45,8 @@ function Roulette() {
                             <Editable
                                 defaultValue={item}
                                 onChange={(newValue) => onChange(index, newValue)}
-                                // maxW="80%"
                                 flex="1"
+                                ml={9}
                             >
                                 <EditablePreview
                                     width="100%"
@@ -57,10 +57,10 @@ function Roulette() {
                                     width={`${57}ch`}
                                 />
                             </Editable>
-                            <Box textAlign="right">
+                            <Box textAlign="right" mr={9} >
                                 <Button
                                     onClick={() => onDelete(index)}
-                                    colorScheme='blue' variant='outline' size='sm' ml={4} p={1}>
+                                    colorScheme='blue' variant='outline' size='sm' p={1}>
                                     <DeleteIcon boxSize={6} />
                                 </Button>
                             </Box>
