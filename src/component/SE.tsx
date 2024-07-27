@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
 import BombIcon from "../assets/bomb.svg"; // SVGファイルを直接インポート
-import ClapIcon from "../assets/bomb.svg"; // 今拍手の画像がないので爆弾で仮置きしてます
+import ClapIcon from "../assets/clap.png"; // PNGファイルを直接インポート
 import StarIcon from "../assets/star.svg"; // SVGファイルを直接インポート
 import ChickIcon from "../assets/chick.png"; // PNGファイルを直接インポート
 import DogIcon from "../assets/dog.svg"; // SVGファイルを直接インポート
