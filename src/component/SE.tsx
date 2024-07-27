@@ -1,3 +1,5 @@
+import React from "react";
+import { useState } from 'react';
 import {
   Popover,
   PopoverTrigger,
@@ -10,11 +12,16 @@ import {
   Button,
   Portal,
   HStack,
-  Stack
+  Stack,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
 } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
 import BombIcon from "../assets/bomb.svg"; // SVGファイルを直接インポート
-import ClapIcon from "../assets/bomb.svg"; // 今拍手の画像がないので爆弾で仮置きしてます
+import ClapIcon from "../assets/clap.png"; // PNGファイルを直接インポート
 import StarIcon from "../assets/star.svg"; // SVGファイルを直接インポート
 import ChickIcon from "../assets/chick.png"; // PNGファイルを直接インポート
 import DogIcon from "../assets/dog.svg"; // SVGファイルを直接インポート
@@ -37,20 +44,23 @@ import IncorrectSound from '../assets/クイズ不正解1.mp3';
 
 function SE() {
 
-  const [bombPlay] = useSound(BombSound, { volume: 0.9 });
-  const [clapPlay] = useSound(ClapSound);
-  const [ankoPlay] = useSound(AnkoSound, {volume: 1.8});
-  const [chickPlay] = useSound(ChickSound, { volume: 0.8 });
-  const [dogPlay] = useSound(DogSound);
-  const [catPlay] = useSound(CatSound, { volume: 0.6 });
-  const [blockPlay] = useSound(BlockSound);
-  const [correctPlay] = useSound(CorrectSound);
-  const [incorrectPlay] = useSound(IncorrectSound);
+  const [sliderValue, setSliderValue] = useState(40.0) // 音量調節スライダーの値
+
+  const [bombPlay] = useSound(BombSound, { volume: sliderValue / 100 });
+  const [clapPlay] = useSound(ClapSound, { volume: sliderValue / 100 });
+  const [ankoPlay] = useSound(AnkoSound, { volume: sliderValue / 100 });
+  const [chickPlay] = useSound(ChickSound, { volume: sliderValue / 100 });
+  const [dogPlay] = useSound(DogSound, { volume: sliderValue / 100 });
+  const [catPlay] = useSound(CatSound, { volume: sliderValue / 100 });
+  const [blockPlay] = useSound(BlockSound, { volume: sliderValue / 100 });
+  const [correctPlay] = useSound(CorrectSound, { volume: sliderValue / 100 });
+  const [incorrectPlay] = useSound(IncorrectSound, { volume: sliderValue / 100 });
 
 
   return (
     <Popover placement="top"> {/* ポップオーバーをボタンの上に表示 */}
       <PopoverTrigger>
+        {/* ホーム画面のベルボタン */}
         <Button
           variant="solid"
           colorScheme="blue"
@@ -58,6 +68,7 @@ function SE() {
         >
           <BellIcon />
         </Button>
+        {/* SEのポップオーバー */}
       </PopoverTrigger>
       <Portal>
         <PopoverContent>
@@ -95,7 +106,7 @@ function SE() {
                   onClick={() => catPlay()}>ねこ</Button>
               </Stack>
               <Stack>
-              <Button
+                <Button
                   colorScheme="blue"
                   leftIcon={<img src={BlockIcon} alt="Block" />}
                   onClick={() => blockPlay()}>ピー音</Button>
@@ -110,6 +121,22 @@ function SE() {
               </Stack>
             </HStack>
           </PopoverBody>
+          {/* 音量調節スライダー */}
+          <PopoverFooter>
+            音量
+            <Slider
+              aria-label='slider-ex-1'
+              colorScheme='pink'
+              defaultValue={30}
+              onChange={(v) => setSliderValue(v)}
+            >
+              <SliderTrack>
+                <SliderFilledTrack />
+              </SliderTrack>
+              <SliderThumb />
+            </Slider>
+          </PopoverFooter>
+
         </PopoverContent>
       </Portal>
     </Popover>
