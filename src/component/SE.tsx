@@ -17,7 +17,6 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  SliderMark,
 } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
 import BombIcon from "../assets/bomb.svg"; // SVGファイルを直接インポート
@@ -45,7 +44,6 @@ import IncorrectSound from '../assets/クイズ不正解1.mp3';
 function SE() {
 
   const [sliderValue, setSliderValue] = useState(40.0) // 音量調節スライダーの値
-
   const [bombPlay] = useSound(BombSound, { volume: sliderValue / 100 });
   const [clapPlay] = useSound(ClapSound, { volume: sliderValue / 100 });
   const [ankoPlay] = useSound(AnkoSound, { volume: sliderValue / 100 });
@@ -58,7 +56,7 @@ function SE() {
 
 
   return (
-    <Popover placement="top"> {/* ポップオーバーをボタンの上に表示 */}
+    <Popover placement="top-start"> {/* ポップオーバーをボタンの上に表示 */}
       <PopoverTrigger>
         {/* ホーム画面のベルボタン */}
         <Button
