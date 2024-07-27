@@ -10,7 +10,12 @@ import {
   Button,
   Portal,
   HStack,
-  Stack
+  Stack,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
 } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
 import BombIcon from "../assets/bomb.svg"; // SVGファイルを直接インポート
@@ -39,7 +44,7 @@ function SE() {
 
   const [bombPlay] = useSound(BombSound, { volume: 0.9 });
   const [clapPlay] = useSound(ClapSound);
-  const [ankoPlay] = useSound(AnkoSound, {volume: 1.8});
+  const [ankoPlay] = useSound(AnkoSound, { volume: 1.8 });
   const [chickPlay] = useSound(ChickSound, { volume: 0.8 });
   const [dogPlay] = useSound(DogSound);
   const [catPlay] = useSound(CatSound, { volume: 0.6 });
@@ -95,7 +100,7 @@ function SE() {
                   onClick={() => catPlay()}>ねこ</Button>
               </Stack>
               <Stack>
-              <Button
+                <Button
                   colorScheme="blue"
                   leftIcon={<img src={BlockIcon} alt="Block" />}
                   onClick={() => blockPlay()}>ピー音</Button>
@@ -110,6 +115,17 @@ function SE() {
               </Stack>
             </HStack>
           </PopoverBody>
+
+          <PopoverFooter>
+            音量
+            <Slider aria-label='slider-ex-1' colorScheme='pink' defaultValue={30}>
+              <SliderTrack>
+                <SliderFilledTrack />
+              </SliderTrack>
+              <SliderThumb />
+            </Slider>
+          </PopoverFooter>
+
         </PopoverContent>
       </Portal>
     </Popover>
