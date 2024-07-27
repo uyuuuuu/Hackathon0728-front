@@ -2,7 +2,8 @@ import Menu from "./component/Menu";
 import SE from "./component/SE";
 import Exit from "./component/Exit";
 import UserAvators from "./component/UserAvatars";
-import backgroundImage from "./assets/homedesk.jpg"; // 画像のパスを指定
+import backgroundImage from "./assets/homedesk.jpg";
+import flagImage from "./assets/flag.png"; // 旗の画像のパスを指定
 import { useEffect } from "react";
 
 function Home() {
@@ -21,6 +22,11 @@ function Home() {
         backgroundImage: `url(${backgroundImage})`,
       }}
     >
+      <img
+        src={flagImage}
+        alt="Flag"
+        className="absolute inset-0 w-full h-full object-cover" // 画像を全画面に広げる
+      />
       <header className="w-full p-4 flex justify-between items-center">
         <Exit />
         <div className="">

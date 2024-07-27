@@ -1,3 +1,5 @@
+//参加している人のアイコンとステータスの取得
+
 import {
   Avatar,
   IconButton,
@@ -13,6 +15,7 @@ import {
   EditIcon,
   ExternalLinkIcon,
 } from "@chakra-ui/icons";
+
 
 function UserAvatars() {
   const userImages = [
@@ -31,18 +34,18 @@ function UserAvatars() {
   ];
 
   const userCoordinates = [
-    { top: "10%", left: "10%" },
-    { top: "10%", left: "30%" },
-    { top: "10%", left: "50%" },
-    { top: "30%", left: "10%" },
-    { top: "30%", left: "30%" },
-    { top: "30%", left: "50%" },
-    { top: "50%", left: "10%" },
-    { top: "50%", left: "30%" },
-    { top: "50%", left: "50%" },
-    { top: "70%", left: "10%" },
-    { top: "70%", left: "30%" },
-    { top: "70%", left: "50%" },
+    { top: "47%", left: "77%" },//1
+    { top: "52%", left: "63%" },
+    { top: "55%", left: "45%" },
+    { top: "47%", left: "35%" },//4
+    { top: "40%", left: "25%" },
+    { top: "33%", left: "15%" },//6
+    { top: "20%", left: "15%" },
+    { top: "18%", left: "27%" },//8
+    { top: "20%", left: "41%" },
+    { top: "24%", left: "52%" },//10
+    { top: "29%", left: "63%" },
+    { top: "34%", left: "74%" },//12
   ];
 
 
@@ -61,7 +64,7 @@ function UserAvatars() {
     <div className="relative w-full h-full">
       {userData.map((user, index) => (
         <Box key={index} position="absolute" top={user.top} left={user.left}>
-          <Avatar src={user.src} size="md" />
+          <Avatar src={user.src} size="xl" />
           <Menu>
             <MenuButton
               as={IconButton}
