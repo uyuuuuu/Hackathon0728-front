@@ -5,10 +5,43 @@ import UserAvators from "./component/UserAvatars";
 import backgroundImage from "./assets/homedesk.jpg";
 import flagImage from "./assets/flag.png";
 import { useEffect } from "react";
+import axios from "axios";
 
 function Home() {
   useEffect(() => {
     document.body.style.overflow = "hidden";
+
+    // 入室
+    const enterServer = async () => {
+      try {
+        const response = await axios.post('/server/enter', {
+          groupID: 'exampleGroupID', // 必要に応じて適切な値に変更
+          userID: 'exampleUserID', // 必要に応じて適切な値に変更
+          userAvatar: 'exampleAvatar' // 必要に応じて適切な値に変更
+        });
+        console.log(response.data); // サーバーからの応答をコンソールに表示
+        // エンドポイントが成功したらenterSeatを呼び出す
+        enterSeat();
+      } catch (error) {
+        console.error('Error entering server:', error);
+      }
+    };
+    const enterSeat = async () => {
+      const seatNum = 1; // 使用するseatNumを指定
+      try {
+        const response = await axios.post(`/ws/enter/${seatNum}`);
+        console.log(response.data); // サーバーからの応答をコンソールに表示
+      } catch (error) {
+        console.error('Error entering seat:', error);
+      }
+    };
+
+    const isFirstVisit = localStorage.getItem('hasVisitedHome') === null;
+
+    if (isFirstVisit) {
+      enterServer();
+      localStorage.setItem('hasVisitedHome', 'true');
+    }
 
     return () => {
       document.body.style.overflow = "auto"; // クリーンアップ時に戻す
