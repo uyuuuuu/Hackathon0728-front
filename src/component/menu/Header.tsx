@@ -38,10 +38,10 @@ function Menu() {
               なずな
             </Text>
           </Box>
-          <HStack ml='1'>
+          <HStack>
             <Tooltip label='gaming' placement='top'>
               <IconButton
-                icon={<FaGamepad />} // ここで表示するアイコンを指定
+                icon={<FaGamepad size='27'/>} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"
@@ -50,7 +50,7 @@ function Menu() {
             </Tooltip>
             <Tooltip label='working' placement='top'>
               <IconButton
-                icon={<FaLaptopCode />} // ここで表示するアイコンを指定
+                icon={<FaLaptopCode size='25'/>} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"
@@ -59,7 +59,7 @@ function Menu() {
             </Tooltip>
             <Tooltip label='listening' placement='top'>
               <IconButton
-                icon={<FaHeadphones />} // ここで表示するアイコンを指定
+                icon={<FaHeadphones size='22'/>} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"
@@ -68,7 +68,7 @@ function Menu() {
             </Tooltip>
             <Tooltip label='reading' placement='top'>
               <IconButton
-                icon={<FaBook />} // ここで表示するアイコンを指定
+                icon={<FaBook size='20'/>} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"
@@ -79,7 +79,7 @@ function Menu() {
           <HStack>
             <Tooltip label='drinking' placement='top'>
               <IconButton
-                icon={<FaWineGlass />} // ここで表示するアイコンを指定
+                icon={<FaWineGlass size='21'/>} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"
@@ -88,7 +88,7 @@ function Menu() {
             </Tooltip>
             <Tooltip label='eating' placement='top'>
               <IconButton
-                icon={<MdFastfood />} // ここで表示するアイコンを指定
+                icon={<MdFastfood size='23'/>} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"
@@ -97,7 +97,7 @@ function Menu() {
             </Tooltip>
             <Tooltip label='chill' placement='top'>
               <IconButton
-                icon={<MdSelfImprovement />} // ここで表示するアイコンを指定
+                icon={<MdSelfImprovement size='30'/>} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"
@@ -106,7 +106,7 @@ function Menu() {
             </Tooltip>
             <Tooltip label='AFK' placement='top'>
               <IconButton
-                icon={<PiOfficeChairFill />} // ここで表示するアイコンを指定
+                icon={<PiOfficeChairFill size='23'/>} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"
