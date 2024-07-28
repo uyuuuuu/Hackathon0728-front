@@ -8,6 +8,7 @@ import {
   FaBook,
   FaWineGlass,
 } from "react-icons/fa";
+import { MdFastfood } from "react-icons/md";
 import useSound from 'use-sound';
 import CheersSound from '../assets/cheers.mp3'; // 乾杯音をインポート
 
@@ -60,7 +61,7 @@ function UserAvatars() {
   const handleIconClick = () => {
     alert(`かんぱい`);
   };
-  const [cheersPlay] = useSound(CheersSound, {volume: 0.8});
+  const [cheersPlay] = useSound(CheersSound, { volume: 0.8 });
 
   const getActivityIcon = (activity, activityDetail) => {
     switch (activity) {
@@ -89,6 +90,8 @@ function UserAvatars() {
             _hover={{ backgroundColor: "gray.700" }} // ホバー時の背景色
           />
         );
+      case "eating":
+        return <MdFastfood />;
       default:
         return null;
     }
