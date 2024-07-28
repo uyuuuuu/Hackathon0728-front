@@ -17,6 +17,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  IconButton
 } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
 import BombIcon from "../assets/bomb.svg"; // SVGファイルを直接インポート
@@ -59,13 +60,11 @@ function SE() {
     <Popover placement="top-start"> {/* ポップオーバーをボタンの上に表示 */}
       <PopoverTrigger>
         {/* ホーム画面のベルボタン */}
-        <Button
-          variant="solid"
-          colorScheme="blue"
-          className="py-2 px-4 rounded-lg text-lg flex items-center" // Tailwind CSSのクラス
-        >
-          <BellIcon />
-        </Button>
+        <IconButton
+        colorScheme="blue"
+        aria-label="SE"
+        icon={<BellIcon  />}
+      />
         {/* SEのポップオーバー */}
       </PopoverTrigger>
       <Portal>
