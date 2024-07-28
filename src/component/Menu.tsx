@@ -20,10 +20,11 @@ function Menu() {
     <>
       <IconButton
         ref={btnRef}
-        colorScheme="teal"
+        bg="rgb(255,157,51)"
         onClick={onOpen}
         aria-label="Menu"
-        icon={<HamburgerIcon />}
+        fontSize='25px'
+        icon={<HamburgerIcon color="white"/>}
       />
       <Drawer
         isOpen={isOpen}

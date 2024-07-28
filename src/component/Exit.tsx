@@ -21,10 +21,11 @@ function Exit() {
   return (
     <>
       <IconButton
-        colorScheme="cyan"
+        bg="rgb(153,151,255)"
         onClick={onOpen}
         aria-label="Exit"
-        icon={<ImExit />}
+        fontSize='20px'
+        icon={<ImExit color="white"/>}
       />
       <Modal isOpen={isOpen} onClose={onClose} size="lg">
         <ModalOverlay />

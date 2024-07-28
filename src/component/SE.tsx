@@ -61,9 +61,10 @@ function SE() {
       <PopoverTrigger>
         {/* ホーム画面のベルボタン */}
         <IconButton
-        colorScheme="blue"
+        bg="rgb(82,209,149)"
         aria-label="SE"
-        icon={<BellIcon  />}
+        fontSize='25px'
+        icon={<BellIcon  color="white"/>}
       />
         {/* SEのポップオーバー */}
       </PopoverTrigger>
@@ -123,7 +124,7 @@ function SE() {
             音量
             <Slider
               aria-label='slider-ex-1'
-              colorScheme='pink'
+              colorScheme='green'
               defaultValue={30}
               onChange={(v) => setSliderValue(v)}
             >
