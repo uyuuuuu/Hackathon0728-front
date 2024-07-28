@@ -1,4 +1,4 @@
-import { Box, Center, Button ,Text} from "@chakra-ui/react";
+import { Box, Center, Button ,Text, useTheme } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import logoImage from "./assets/logo.png";
 
@@ -27,8 +27,8 @@ function Enter() {
               </Center>
             </Center>
             <Box
-              bg="black"
-              w="80px"
+              bg="rgb(120,120,120)"
+              w="100px"
               h="35px"
               p={4}
               color="black"
