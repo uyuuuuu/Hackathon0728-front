@@ -7,7 +7,7 @@ function Paint() {
       <div className="left-0 py-4 px-4">
         <Back />
       </div>
-      <Canvas width={1240} height={600} />
+      <Canvas width={1240} height={500} />
     </>
   );
 }
