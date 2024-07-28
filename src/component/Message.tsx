@@ -1,16 +1,16 @@
 //参加している人のアイコンと名前の取得
 //リアルタイム通信
 
+import { ChatIcon } from "@chakra-ui/icons";
 import {
+  Avatar,
   Box,
   FormControl,
-  Input,
-  VStack,
-  Text,
   IconButton,
-  Avatar,
+  Input,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
-import { ChatIcon } from "@chakra-ui/icons";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -71,34 +71,34 @@ function Message() {
         >
           {messages.map((message, index) => (
             <Box
-            key={index}
-            mb={1}
-            display="flex"
-            alignItems="center"
-            justifyContent={
-              message.userName === userName ? "flex-end" : "flex-start"
-            }
-          >
-            {message.userName !== userName && (
-              <Avatar name={message.userName} size="sm" mr={2} />
-            )}
-            <Box
-              bg={message.userName === userName ? "blue.100" : "gray.100"}
-              p={2}
-              borderRadius="md"
-              maxW="70%"
-              textAlign={message.userName === userName ? "right" : "left"}
+              key={index}
+              mb={1}
               display="flex"
               alignItems="center"
+              justifyContent={
+                message.userName === userName ? "flex-end" : "flex-start"
+              }
             >
-              <Text>
-               {message.message}
-              </Text>
+              {message.userName !== userName && (
+                <Avatar name={message.userName} size="sm" mr={2} />
+              )}
+              <Box
+                bg={message.userName === userName ? "blue.100" : "gray.100"}
+                p={2}
+                borderRadius="md"
+                maxW="70%"
+                textAlign={message.userName === userName ? "right" : "left"}
+                display="flex"
+                alignItems="center"
+              >
+                <Text>
+                  {message.message}
+                </Text>
+              </Box>
+              {message.userName === userName && (
+                <Avatar name={message.userName} size="sm" ml={2} />
+              )}
             </Box>
-            {message.userName === userName && (
-              <Avatar name={message.userName} size="sm" ml={2} />
-            )}
-          </Box>
           ))}
           <div ref={messagesEndRef} />
         </Box>
