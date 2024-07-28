@@ -1,25 +1,23 @@
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import {
-    Button
-} from "@chakra-ui/react";
+import { IconButton } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 function Back() {
-    const navigation = useNavigate()
-    function onBack() {
-        navigation("/Home");
-    }
+  const navigate = useNavigate();
 
+  function onBack() {
+    navigate("/Home");
+  }
 
-    return (
-        <>
-            <Button
-                onClick={() => onBack()}
-                colorScheme='blue' variant='outline' size='sm' p={1}>
-                <ArrowBackIcon boxSize={6} />
-            </Button>
-        </>
-    );
+  return (
+    <IconButton
+      variant="outline" // `variant` プロパティは1つに統一
+      colorScheme="blue"
+      onClick={onBack} // `onClick` をプロパティとして指定
+      aria-label="Go Back" // `aria-label` を「戻る」に変更
+      icon={<ArrowBackIcon />}
+    />
+  );
 }
 
 export default Back;

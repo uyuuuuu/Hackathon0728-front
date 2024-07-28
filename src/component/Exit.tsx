@@ -6,8 +6,9 @@ import {
   ModalContent,
   ModalBody,
   ModalFooter,
+  IconButton,
 } from "@chakra-ui/react";
-import LogoutIcon from "../assets/logout.svg"; // SVGファイルを直接インポート
+import { ImExit } from "react-icons/im";
 
 function Exit() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -19,17 +20,15 @@ function Exit() {
 
   return (
     <>
-      <Button
-        variant="solid"
-        leftIcon={<img src={LogoutIcon} alt="Logout" />}
-        colorScheme="cyan" // Chakra UIのcolorSchemeを使用
+      <IconButton
+        colorScheme="cyan"
         onClick={onOpen}
+        aria-label="Exit"
+        icon={<ImExit />}
       />
       <Modal isOpen={isOpen} onClose={onClose} size="lg">
         <ModalOverlay />
-        <ModalContent
-          my="25%"
-        >
+        <ModalContent my="25%">
           <ModalBody>本当に退出しますか？</ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
