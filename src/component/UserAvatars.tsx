@@ -1,5 +1,6 @@
 //参加している人のアイコンとステータスの取得
 
+import { useState } from "react";
 import { Avatar, Box, Tooltip, IconButton } from "@chakra-ui/react";
 import {
   FaGamepad,
@@ -8,10 +9,13 @@ import {
   FaBook,
   FaWineGlass,
 } from "react-icons/fa";
-import useSound from 'use-sound';
-import CheersSound from '../assets/cheers.mp3'; // 乾杯音をインポート
+import useSound from "use-sound";
+import CheersSound from "../assets/cheers.mp3"; // 乾杯音をインポート
+import Kanpai from "./Kanpai";
 
 function UserAvatars() {
+  const [showKanpai, setShowKanpai] = useState(false);
+
   const userImages = [
     "path/to/user1.png",
     "path/to/user2.png",
@@ -58,9 +62,12 @@ function UserAvatars() {
   ];
 
   const handleIconClick = () => {
-    alert(`かんぱい`);
+    setShowKanpai(true);
+    cheersPlay();
+    setTimeout(() => setShowKanpai(false), 3000); // 3秒後にアニメーションを非表示
   };
-  const [cheersPlay] = useSound(CheersSound, {volume: 0.8});
+
+  const [cheersPlay] = useSound(CheersSound, { volume: 0.8 });
 
   const getActivityIcon = (activity, activityDetail) => {
     switch (activity) {
@@ -78,7 +85,6 @@ function UserAvatars() {
             icon={<FaWineGlass />}
             aria-label="Drink"
             onClick={() => {
-              cheersPlay();
               handleIconClick();
             }}
             borderRadius="full" // まん丸にする
@@ -122,12 +128,16 @@ function UserAvatars() {
                 fontSize="24px"
                 backgroundColor={"black"}
               >
-                {getActivityIcon(userActivities[index].activity, userActivities[index].activityDetail)}
+                {getActivityIcon(
+                  userActivities[index].activity,
+                  userActivities[index].activityDetail
+                )}
               </Box>
             </Box>
           </Tooltip>
         </Box>
       ))}
+      {showKanpai && <Kanpai />}
     </div>
   );
 }

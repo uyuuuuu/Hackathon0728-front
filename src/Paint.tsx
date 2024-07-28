@@ -4,7 +4,7 @@ import Back from "./component/Back";
 function Paint() {
   return (
     <>
-      <div className="left-0 py-2 px-2">
+      <div className="left-0 py-4 px-4">
         <Back />
       </div>
       <Canvas width={1240} height={600} />
