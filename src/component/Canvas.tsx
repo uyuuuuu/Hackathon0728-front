@@ -151,6 +151,16 @@ const Canvas: React.FC<IProps> = (props) => {
     }
   }
 
+  const ExportAsImage = () => {
+    const canvas: HTMLCanvasElement | null = canvasRef.current;
+    if (!canvas) return;
+    const dataURL = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'canvas-image.png';
+    link.click();
+  }
+
   return (
     <Stack spacing={4} p={4}>
       <Box>
@@ -167,6 +177,7 @@ const Canvas: React.FC<IProps> = (props) => {
       </Box>
       <Stack spacing={4}>
         <Button onClick={Reset} colorScheme="teal">リセット</Button>
+        <Button onClick={ExportAsImage} colorScheme="teal">画像としてエクスポート</Button>
         <Stack spacing={4}>
           <Box>
             <label>ペンの太さ:</label>
