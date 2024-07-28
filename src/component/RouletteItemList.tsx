@@ -1,5 +1,5 @@
 import { DeleteIcon } from "@chakra-ui/icons";
-import { Box, Button, Editable, EditableInput, EditablePreview, Flex, VStack } from "@chakra-ui/react";
+import { Box, Button, Editable, EditableInput, EditablePreview, Flex, Text, VStack } from "@chakra-ui/react";
 
 interface ItemListProps {
     items: string[];
@@ -43,7 +43,9 @@ const RouletteView: React.FC<ItemListProps> = ({ items, setItems }) => {
 
     return (
         <VStack w='50%' p={8}>
-                <div>お題一覧</div>
+                <Text fontSize="2xl" fontWeight="bold" mb={4}>
+                        お題一覧
+                    </Text>
                 <Button
                     mt = {5}
                     mb = {5}
