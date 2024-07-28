@@ -23,6 +23,8 @@ import {
   MdFastfood,
   MdSelfImprovement
 } from "react-icons/md";
+import { PiOfficeChairFill } from "react-icons/pi";
+
 
 
 function Menu() {
@@ -36,7 +38,7 @@ function Menu() {
               なずな
             </Text>
           </Box>
-          <HStack>
+          <HStack ml='1'>
             <Tooltip label='gaming' placement='top'>
               <IconButton
                 icon={<FaGamepad />} // ここで表示するアイコンを指定
@@ -73,6 +75,8 @@ function Menu() {
                 mb={4} // アイコンボタンの下にマージンを追加
               />
             </Tooltip>
+          </HStack>
+          <HStack>
             <Tooltip label='drinking' placement='top'>
               <IconButton
                 icon={<FaWineGlass />} // ここで表示するアイコンを指定
@@ -82,8 +86,6 @@ function Menu() {
                 mb={4} // アイコンボタンの下にマージンを追加
               />
             </Tooltip>
-          </HStack>
-          <HStack>
             <Tooltip label='eating' placement='top'>
               <IconButton
                 icon={<MdFastfood />} // ここで表示するアイコンを指定
@@ -96,6 +98,15 @@ function Menu() {
             <Tooltip label='chill' placement='top'>
               <IconButton
                 icon={<MdSelfImprovement />} // ここで表示するアイコンを指定
+                colorScheme="teal"
+                aria-label="Gamepad"
+                size="md"
+                mb={4} // アイコンボタンの下にマージンを追加
+              />
+            </Tooltip>
+            <Tooltip label='AFK' placement='top'>
+              <IconButton
+                icon={<PiOfficeChairFill />} // ここで表示するアイコンを指定
                 colorScheme="teal"
                 aria-label="Gamepad"
                 size="md"

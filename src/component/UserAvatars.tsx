@@ -13,6 +13,7 @@ import {
   MdFastfood,
   MdSelfImprovement
 } from "react-icons/md";
+import { PiOfficeChairFill } from "react-icons/pi";
 import useSound from "use-sound";
 import CheersSound from "../assets/cheers.mp3"; // 乾杯音をインポート
 import Kanpai from "./Kanpai";
@@ -100,6 +101,10 @@ function UserAvatars() {
         );
       case "eating":
         return <MdFastfood />;
+      case "chill":
+        return <MdSelfImprovement />;
+      case "AFK":
+        return <PiOfficeChairFill />;
       default:
         return null;
     }
