@@ -9,6 +9,11 @@ import {
   FaBook,
   FaWineGlass,
 } from "react-icons/fa";
+import {
+  MdFastfood,
+  MdSelfImprovement
+} from "react-icons/md";
+import { PiOfficeChairFill } from "react-icons/pi";
 import useSound from "use-sound";
 import CheersSound from "../assets/cheers.mp3"; // 乾杯音をインポート
 import Kanpai from "./Kanpai";
@@ -66,7 +71,6 @@ function UserAvatars() {
     cheersPlay();
     setTimeout(() => setShowKanpai(false), 3000); // 3秒後にアニメーションを非表示
   };
-
   const [cheersPlay] = useSound(CheersSound, { volume: 0.8 });
 
   const getActivityIcon = (activity, activityDetail) => {
@@ -95,6 +99,12 @@ function UserAvatars() {
             _hover={{ backgroundColor: "gray.700" }} // ホバー時の背景色
           />
         );
+      case "eating":
+        return <MdFastfood />;
+      case "chill":
+        return <MdSelfImprovement />;
+      case "AFK":
+        return <PiOfficeChairFill />;
       default:
         return null;
     }
