@@ -1,35 +1,43 @@
 //参加している人のアイコンとステータスの取得
 
-import { useState } from "react";
-import { Avatar, Box, Tooltip, IconButton } from "@chakra-ui/react";
+import { Avatar, Box, IconButton, Tooltip } from "@chakra-ui/react";
+import axios from 'axios';
+import { useEffect, useState } from "react";
 import {
-  FaGamepad,
-  FaLaptopCode,
-  FaHeadphones,
   FaBook,
+  FaGamepad,
+  FaHeadphones,
+  FaLaptopCode,
   FaWineGlass,
 } from "react-icons/fa";
 import useSound from "use-sound";
 import CheersSound from "../assets/cheers.mp3"; // 乾杯音をインポート
 import Kanpai from "./Kanpai";
 
+interface Users {
+  name: string;
+  iconUrl: string;
+  status: number;
+}
+
 function UserAvatars() {
   const [showKanpai, setShowKanpai] = useState(false);
+  const [users, setUsers] = useState<Users[]>([]);
 
-  const userImages = [
-    "path/to/user1.png",
-    "path/to/user2.png",
-    "path/to/user3.png",
-    "path/to/user1.png",
-    "path/to/user2.png",
-    "path/to/user3.png",
-    "path/to/user1.png",
-    "path/to/user2.png",
-    "path/to/user3.png",
-    "path/to/user1.png",
-    "path/to/user2.png",
-    "path/to/user3.png",
-  ];
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const response = await axios.get<Users[]>(
+          `http://localhost:3000/home/user_icon`
+        );
+        setUsers(response.data);
+      } catch (error) {
+        console.error("Error fetching members:", error);
+      }
+    };
+
+    fetchMembers();
+  }, []);
 
   const userActivities = [
     { activity: "gaming", activityDetail: "Playing Minecraft" },
@@ -101,8 +109,10 @@ function UserAvatars() {
   };
 
   // 画像と座標を組み合わせた配列を作成
-  const userData = userImages.map((image, index) => ({
-    src: image,
+  const userData = users.map((user, index) => ({
+    src: user.iconUrl,
+    name: user.name,
+    status: user.status,
     ...userCoordinates[index],
   }));
 
@@ -113,6 +123,8 @@ function UserAvatars() {
           <Tooltip label={userActivities[index].activityDetail} hasArrow>
             <Box position="relative">
               <Avatar src={user.src} size="xl" />
+              <p>{user.name}</p>
+              <p>{user.status}</p>
               <Box
                 position="absolute"
                 bottom="-4"
