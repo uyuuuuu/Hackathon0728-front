@@ -1,7 +1,7 @@
 //キャンパスのリアルタイム通信？
 
-import React, { useRef, useState } from 'react';
-import { Box, Button, Input, Stack, Slider, SliderTrack, SliderFilledTrack, SliderThumb} from '@chakra-ui/react';
+import { Box, Button, Input, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Stack } from '@chakra-ui/react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface IProps {
   width: number;
@@ -17,13 +17,45 @@ interface IRect {
   bottom: number;
 }
 
+interface IDrawData {
+  x: number;
+  y: number;
+  prevX: number | null;
+  prevY: number | null;
+  lineWidth: number;
+  strokeStyle: string;
+}
+
 const Canvas: React.FC<IProps> = (props) => {
   const { width, height } = props;
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [lineWidth, setLineWidth] = useState<number>(10);
   const [strokeStyle, setStrokeStyle] = useState<string>('#000000');
+  const [ws, setWs] = useState<WebSocket | null>(null);
   let mouseX: number | null = null;
   let mouseY: number | null = null;
+
+  useEffect(() => {
+    const socket = new WebSocket(`ws://${window.location.hostname}:3000/paint/draw`);
+    setWs(socket);
+
+    socket.onopen = () => {
+      console.log('WebSocket connection established');
+    };
+  
+    socket.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+    
+    socket.onmessage = (event) => {
+      const data: IDrawData = JSON.parse(event.data);
+      drawFromServer(data);
+    };
+
+    return () => {
+      socket.close();
+    };
+  }, []);
 
   const getContext = (): CanvasRenderingContext2D => {
     const canvas: HTMLCanvasElement | null = canvasRef.current;
@@ -77,13 +109,46 @@ const Canvas: React.FC<IProps> = (props) => {
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = strokeStyle;
     ctx.stroke();
+
+     // サーバーに描画データを送信
+     if (ws && ws.readyState === WebSocket.OPEN) {
+      const drawData: IDrawData = {
+        x,
+        y,
+        prevX: mouseX,
+        prevY: mouseY,
+        lineWidth,
+        strokeStyle
+      };
+      ws.send(JSON.stringify(drawData));
+    }
+
     mouseX = x;
     mouseY = y;
+  }
+
+  const drawFromServer = (data: IDrawData) => {
+    const ctx = getContext();
+    ctx.beginPath();
+    ctx.globalAlpha = 1.0;
+    if (data.prevX === null || data.prevY === null) {
+      ctx.moveTo(data.x, data.y);
+    } else {
+      ctx.moveTo(data.prevX, data.prevY);
+    }
+    ctx.lineTo(data.x, data.y);
+    ctx.lineCap = "round";
+    ctx.lineWidth = data.lineWidth;
+    ctx.strokeStyle = data.strokeStyle;
+    ctx.stroke();
   }
 
   const Reset = () => {
     const ctx = getContext();
     ctx.clearRect(0, 0, width, height);
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ type: 'reset' }));
+    }
   }
 
   return (
