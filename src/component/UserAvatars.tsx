@@ -1,6 +1,6 @@
 //参加している人のアイコンとステータスの取得
 
-import { Avatar, Box, Tooltip ,IconButton} from "@chakra-ui/react";
+import { Avatar, Box, Tooltip, IconButton } from "@chakra-ui/react";
 import {
   FaGamepad,
   FaLaptopCode,
@@ -8,6 +8,8 @@ import {
   FaBook,
   FaWineGlass,
 } from "react-icons/fa";
+import useSound from 'use-sound';
+import CheersSound from '../assets/cheers.mp3'; // 乾杯音をインポート
 
 function UserAvatars() {
   const userImages = [
@@ -45,7 +47,7 @@ function UserAvatars() {
     { top: "51%", left: "70%" },
     { top: "55%", left: "60%" },
     { top: "52%", left: "43%" }, //4
-    { top: "44%", left: "33%" }, 
+    { top: "44%", left: "33%" },
     { top: "37%", left: "23%" }, //6
     { top: "31%", left: "13%" },
     { top: "19%", left: "22%" }, //8
@@ -58,6 +60,7 @@ function UserAvatars() {
   const handleIconClick = () => {
     alert(`かんぱい`);
   };
+  const [cheersPlay] = useSound(CheersSound, {volume: 0.8});
 
   const getActivityIcon = (activity, activityDetail) => {
     switch (activity) {
@@ -72,16 +75,19 @@ function UserAvatars() {
       case "drinking":
         return (
           <IconButton
-          icon={<FaWineGlass />}
-          aria-label="Drink"
-          onClick={() => handleIconClick()}
-          borderRadius="full" // まん丸にする
-          width="40px" // 幅
-          height="40px" // 高さ
-          backgroundColor="black" // 背景色
-          color="white" // アイコンの色
-          _hover={{ backgroundColor: "gray.700" }} // ホバー時の背景色
-        />
+            icon={<FaWineGlass />}
+            aria-label="Drink"
+            onClick={() => {
+              cheersPlay();
+              handleIconClick();
+            }}
+            borderRadius="full" // まん丸にする
+            width="40px" // 幅
+            height="40px" // 高さ
+            backgroundColor="black" // 背景色
+            color="white" // アイコンの色
+            _hover={{ backgroundColor: "gray.700" }} // ホバー時の背景色
+          />
         );
       default:
         return null;
@@ -116,7 +122,7 @@ function UserAvatars() {
                 fontSize="24px"
                 backgroundColor={"black"}
               >
-                {getActivityIcon(userActivities[index].activity,userActivities[index].activityDetail)}
+                {getActivityIcon(userActivities[index].activity, userActivities[index].activityDetail)}
               </Box>
             </Box>
           </Tooltip>
