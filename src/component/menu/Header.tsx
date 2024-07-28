@@ -38,11 +38,11 @@ function Menu() {
               なずな
             </Text>
           </Box>
-          <HStack ml='1'>
+          <HStack>
             <Tooltip label='gaming' placement='top'>
               <IconButton
-                icon={<FaGamepad />} // ここで表示するアイコンを指定
-                colorScheme="teal"
+                icon={<FaGamepad size='27' color="white"/>} // ここで表示するアイコンを指定
+                bg="rgb(88,163,244)"
                 aria-label="Gamepad"
                 size="md"
                 mb={4} // アイコンボタンの下にマージンを追加
@@ -50,8 +50,8 @@ function Menu() {
             </Tooltip>
             <Tooltip label='working' placement='top'>
               <IconButton
-                icon={<FaLaptopCode />} // ここで表示するアイコンを指定
-                colorScheme="teal"
+                icon={<FaLaptopCode size='25' color="white"/>} // ここで表示するアイコンを指定
+                bg="rgb(88,163,244)"
                 aria-label="Gamepad"
                 size="md"
                 mb={4} // アイコンボタンの下にマージンを追加
@@ -59,8 +59,8 @@ function Menu() {
             </Tooltip>
             <Tooltip label='listening' placement='top'>
               <IconButton
-                icon={<FaHeadphones />} // ここで表示するアイコンを指定
-                colorScheme="teal"
+                icon={<FaHeadphones size='22' color="white"/>} // ここで表示するアイコンを指定
+                bg="rgb(88,163,244)"
                 aria-label="Gamepad"
                 size="md"
                 mb={4} // アイコンボタンの下にマージンを追加
@@ -68,8 +68,8 @@ function Menu() {
             </Tooltip>
             <Tooltip label='reading' placement='top'>
               <IconButton
-                icon={<FaBook />} // ここで表示するアイコンを指定
-                colorScheme="teal"
+                icon={<FaBook size='20' color="white"/>} // ここで表示するアイコンを指定
+                bg="rgb(88,163,244)"
                 aria-label="Gamepad"
                 size="md"
                 mb={4} // アイコンボタンの下にマージンを追加
@@ -79,8 +79,8 @@ function Menu() {
           <HStack>
             <Tooltip label='drinking' placement='top'>
               <IconButton
-                icon={<FaWineGlass />} // ここで表示するアイコンを指定
-                colorScheme="teal"
+                icon={<FaWineGlass size='21' color="white"/>} // ここで表示するアイコンを指定
+                bg="rgb(88,163,244)"
                 aria-label="Gamepad"
                 size="md"
                 mb={4} // アイコンボタンの下にマージンを追加
@@ -88,8 +88,8 @@ function Menu() {
             </Tooltip>
             <Tooltip label='eating' placement='top'>
               <IconButton
-                icon={<MdFastfood />} // ここで表示するアイコンを指定
-                colorScheme="teal"
+                icon={<MdFastfood size='23' color="white"/>} // ここで表示するアイコンを指定
+                bg="rgb(88,163,244)"
                 aria-label="Gamepad"
                 size="md"
                 mb={4} // アイコンボタンの下にマージンを追加
@@ -97,8 +97,8 @@ function Menu() {
             </Tooltip>
             <Tooltip label='chill' placement='top'>
               <IconButton
-                icon={<MdSelfImprovement />} // ここで表示するアイコンを指定
-                colorScheme="teal"
+                icon={<MdSelfImprovement size='30' color="white"/>} // ここで表示するアイコンを指定
+                bg="rgb(88,163,244)"
                 aria-label="Gamepad"
                 size="md"
                 mb={4} // アイコンボタンの下にマージンを追加
@@ -106,8 +106,8 @@ function Menu() {
             </Tooltip>
             <Tooltip label='AFK' placement='top'>
               <IconButton
-                icon={<PiOfficeChairFill />} // ここで表示するアイコンを指定
-                colorScheme="teal"
+                icon={<PiOfficeChairFill size='23' color="white"/>} // ここで表示するアイコンを指定
+                bg="rgb(88,163,244)"
                 aria-label="Gamepad"
                 size="md"
                 mb={4} // アイコンボタンの下にマージンを追加
